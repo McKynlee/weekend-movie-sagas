@@ -20,6 +20,7 @@ function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
   yield takeEvery('CREATE_MOVIE', createMovie);
   yield takeEvery('FETCH_GENRES', fetchAllGenres)
+  yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails)
 }
 
 function* fetchAllMovies() {
@@ -49,6 +50,22 @@ function* fetchAllGenres() {
     console.log('ERROR');
   }
 } // end fetchAllGenres
+
+function* fetchMovieDetails(action) {
+  // get all details that belong to the movie that was clicked:
+  // request server retrieve them from DB, then store in reducer
+  try {
+    const movieDetails = yield axios.get(`/api/movie/${action.payload}`)
+
+    yield put({
+      type: 'SET_MOVIE_DETAILS',
+      payload: movieDetails.data,
+    })
+  }
+  catch (err) {
+    console.log('ERROR fetching movie details');
+  }
+} // end fetchMovieDetails
 
 function* createMovie(action) {
   // post new movie from AddMovie.jsx to the DB
@@ -89,11 +106,29 @@ const genres = (state = [], action) => {
   }
 }
 
+const movieDetailsTemplate = {
+  id: 0,
+  title: '',
+  poster: '',
+  description: '',
+  genre: [],
+}
+//Used to store current clicked-on movie details:
+const movieDetails = (state = movieDetailsTemplate, action) => {
+  switch (action.type) {
+    case 'SET_MOVIE_DETAILS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    movieDetails,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),
