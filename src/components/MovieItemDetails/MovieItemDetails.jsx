@@ -6,10 +6,8 @@ function MovieItemDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // bring in selected movies on page load:
-  // useEffect(() => {
-  //   dispatch({ type: 'FETCH_MOVIE_DETAILS' });
-  // }, []);
+  // I feel like I should be using useEffect to bring
+  // info in on load, but it seems to be working...
 
   // Bring movieDetails in from Reducer
   // in order to render them on page:
