@@ -13,7 +13,12 @@ function AddMovie() {
 
   console.log('title:', title,
     'posterUrl:', posterURL,
-    'description:', description);
+    'description:', description,
+    'genre:', genre);
+
+  const handleCancel = () => {
+    console.log('handleCancel');
+  }
 
   return (
     <div>
@@ -36,8 +41,10 @@ function AddMovie() {
           onChange={event => setDescription(event.target.value)}
         />
       </label>
-      <select>
-        <option>Choose a Genre</option>
+      <select onChange={event => setGenre(event.target.value)}>
+        <option value=''>Choose a Genre</option>
+        <option>Test Genre</option>
+        {/* .map genre list here */}
       </select>
       <button onClick={handleCancel}>
         Cancel
