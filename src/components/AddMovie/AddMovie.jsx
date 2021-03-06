@@ -36,6 +36,15 @@ function AddMovie() {
           onChange={event => setDescription(event.target.value)}
         />
       </label>
+      <select>
+        <option>Choose a Genre</option>
+      </select>
+      <button onClick={handleCancel}>
+        Cancel
+        </button>
+      <button>
+        Save
+        </button>
     </div>
   )
 } //end AddMovie
