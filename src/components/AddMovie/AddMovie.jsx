@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 
 // Form page for users to add movie to the list:
@@ -18,6 +18,21 @@ function AddMovie() {
   //   'posterUrl:', posterURL,
   //   'description:', description,
   //   'genre:', genre_id);
+
+  // Request all genres from db (via Saga) on load:
+  useEffect(() => {
+    fetchGenres();
+  }, []);
+
+  const fetchGenres = () => {
+    dispatch({
+      type: 'FETCH_GENRES'
+    })
+  }
+
+  // Bring in all genres saved in the reducer:
+  const genreList = useSelector(store => store.genres)
+  console.log('genreList', genreList);
 
   // On click of cancel button, navigate to home
   const handleCancel = () => {
