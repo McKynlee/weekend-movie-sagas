@@ -32,7 +32,7 @@ function AddMovie() {
 
   // Bring in all genres saved in the reducer:
   const genreList = useSelector(store => store.genres)
-  console.log('genreList', genreList);
+  // console.log('genreList', genreList);
 
   // On click of cancel button, navigate to home
   const handleCancel = () => {
@@ -85,8 +85,13 @@ function AddMovie() {
           setGenre_id(event.target.value)}>
           <option value=''>Choose a Genre</option>
           {/* set value of each option = that genre's id */}
-          <option value={genre_id}>Test Genre</option>
-          {/* .map genre list here */}
+          {genreList.map(genre => {
+            return (
+              <option key={genre.id} value={genre.id}>
+                {genre.name}
+              </option>
+            )
+          })}
         </select>
         <button onClick={handleCancel}>
           Cancel
