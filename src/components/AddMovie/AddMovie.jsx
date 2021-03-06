@@ -11,14 +11,31 @@ function AddMovie() {
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
 
-  console.log('title:', title);
+  console.log('title:', title,
+    'posterUrl:', posterURL,
+    'description:', description);
 
   return (
     <div>
+      <label>Title:
       <input type="text" value={title}
-        placeholder="Movie Title"
-        onChange={(event) => { setTitle(event.target.value) }}
-      />
+          placeholder="Movie Title"
+          onChange={event => setTitle(event.target.value)}
+        />
+      </label>
+      <label>Movie Poster URL:
+      <input type="text" value={posterURL}
+          placeholder="Poster URL"
+          onChange={event => setPosterURL(event.target.value)}
+        />
+      </label>
+      <label>Description:
+        <textarea id="description"
+          name="description" rows="4" cols="10"
+          value={description}
+          onChange={event => setDescription(event.target.value)}
+        />
+      </label>
     </div>
   )
 } //end AddMovie
