@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import './MovieList.css'
 
 function MovieList() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Bring movie list from DB in via Reducer:
   const movies = useSelector(store => store.movies);
-
-  // 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -25,6 +25,7 @@ function MovieList() {
       type: 'FETCH_MOVIE_DETAILS',
       payload: selectedMovieID
     })
+    history.push('/details')
   }
 
   return (
@@ -42,7 +43,6 @@ function MovieList() {
         })}
       </section>
     </main>
-
   );
 }
 

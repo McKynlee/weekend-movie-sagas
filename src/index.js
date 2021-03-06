@@ -65,8 +65,7 @@ function* fetchMovieDetails(action) {
   catch (err) {
     console.log('ERROR fetching movie details');
   }
-}
-
+} // end fetchMovieDetails
 
 function* createMovie(action) {
   // post new movie from AddMovie.jsx to the DB
