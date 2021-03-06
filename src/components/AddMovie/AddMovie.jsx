@@ -14,10 +14,10 @@ function AddMovie() {
   const [genre_id, setGenre_id] = useState(1);
 
   // Test that inputs are captured:
-  console.log('title:', title,
-    'posterUrl:', posterURL,
-    'description:', description,
-    'genre:', genre_id);
+  // console.log('title:', title,
+  //   'posterUrl:', posterURL,
+  //   'description:', description,
+  //   'genre:', genre_id);
 
   // On click of cancel button, navigate to home
   const handleCancel = () => {
@@ -38,6 +38,7 @@ function AddMovie() {
         genre_id
       }
     })
+    history.push('/');
   } // end saveNewMovie
 
   return (
