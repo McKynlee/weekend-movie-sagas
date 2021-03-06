@@ -1,19 +1,39 @@
-import {HashRouter as Router, Route} from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-import MovieList from '../MovieList/MovieList'
+
+// Custom components:
+import MovieList from '../MovieList/MovieList';
+import MovieItemDetails from '../MovieItemDetails/MovieItemDetails';
+import AddMovie from '../AddMovie/AddMovie';
 
 function App() {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
-      <Router>        
+
+      <Router>
+        <nav>
+          <div>
+            <Link to="/">Home</Link>
+          </div>
+          <div>
+            <Link to="/add">Add Movie</Link>
+          </div>
+        </nav>
         <Route path="/" exact>
           <MovieList />
         </Route>
-        
+
         {/* Details page */}
+        <Route path="/details" exact>
+          <MovieItemDetails />
+        </Route>
 
         {/* Add Movie page */}
+        <Route path="/add" exact>
+          <AddMovie />
+        </Route>
+
       </Router>
     </div>
   );
