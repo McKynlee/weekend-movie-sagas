@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 
 function MovieList() {
-
   const dispatch = useDispatch();
+
+  // Bring movie list from DB in via Reducer:
   const movies = useSelector(store => store.movies);
+
+  // 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -13,8 +16,15 @@ function MovieList() {
 
   // When movie clicked on, send user to detail page
   // to see that movie's info:
-  const handleMoveToDetail = (movieDetails) => {
-    console.log('in handleMoveToDetail:', movieDetails);
+  const handleMovieDetail = (selectedMovieID) => {
+    console.log('in handleMoveToDetail:', selectedMovieID);
+
+    // Dispatch selectedMovieID to saga to use to collect
+    // all movie details (including genres!) from DB:
+    dispatch({
+      type: 'FETCH_MOVIE_DETAILS',
+      payload: selectedMovieID
+    })
   }
 
   return (
@@ -24,7 +34,7 @@ function MovieList() {
         {movies.map(movie => {
           return (
             <div key={movie.id} onClick={() =>
-              handleMoveToDetail(movie)}>
+              handleMovieDetail(movie.id)}>
               <h3>{movie.title}</h3>
               <img src={movie.poster} alt={movie.title} />
             </div>
