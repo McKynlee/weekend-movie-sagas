@@ -35,9 +35,20 @@ function* fetchAllMovies() {
 }
 
 function* createMovie(action) {
-  // add input movie from AddMovie.jsx to the DB
-  console.log('createMovie action:', action);
-}
+  // post new movie from AddMovie.jsx to the DB
+  yield axios.post('/api/movie', action.payload);
+
+  // refresh movie list:
+  try {
+    yield put({
+      type: 'FETCH_MOVIES'
+    })
+  }
+  catch (error) {
+    console.log('Error adding movie:', error);
+  }
+} //end createMovie
+
 // Create sagaMiddleware so that we 
 // can activate sagas in the storeInstance
 const sagaMiddleware = createSagaMiddleware();

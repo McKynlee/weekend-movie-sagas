@@ -11,13 +11,13 @@ function AddMovie() {
   const [title, setTitle] = useState('');
   const [posterURL, setPosterURL] = useState('');
   const [description, setDescription] = useState('');
-  const [genre, setGenre] = useState('');
+  const [genre_id, setGenre_id] = useState(1);
 
   // Test that inputs are captured:
   console.log('title:', title,
     'posterUrl:', posterURL,
     'description:', description,
-    'genre:', genre);
+    'genre:', genre_id);
 
   // On click of cancel button, navigate to home
   const handleCancel = () => {
@@ -35,7 +35,7 @@ function AddMovie() {
         title,
         poster: posterURL,
         description,
-        genre
+        genre_id
       }
     })
   } // end saveNewMovie
@@ -66,9 +66,10 @@ function AddMovie() {
           />
         </label>
         <select onChange={event =>
-          setGenre(event.target.value)}>
+          setGenre_id(event.target.value)}>
           <option value=''>Choose a Genre</option>
-          <option>Test Genre</option>
+          {/* set value of each option = that genre's id */}
+          <option value={genre_id}>Test Genre</option>
           {/* .map genre list here */}
         </select>
         <button onClick={handleCancel}>
