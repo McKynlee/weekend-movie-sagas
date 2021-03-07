@@ -91,6 +91,8 @@ const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
       return action.payload;
+    case 'SELECT_MOVIE':
+      return state.filter(movie => movie.id == action.payload.id)
     default:
       return state;
   }
@@ -106,29 +108,12 @@ const genres = (state = [], action) => {
   }
 }
 
-const movieDetailsTemplate = {
-  id: 0,
-  title: '',
-  poster: '',
-  description: '',
-  genre: [],
-}
-//Used to store current clicked-on movie details:
-const movieDetails = (state = movieDetailsTemplate, action) => {
-  switch (action.type) {
-    case 'SET_MOVIE_DETAILS':
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
-    movieDetails,
+    // movieDetails,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),

@@ -5,7 +5,11 @@ const pool = require('../modules/pool')
 // GET all movies to render on MovieList
 router.get('/', (req, res) => {
 
-  const query = `SELECT * FROM movies ORDER BY "title" ASC`;
+  const query = `SELECT "movies".id, "movies".title, "movies".description, "movies".poster,
+  JSON_AGG (name) "genres" FROM "movies"
+  JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
+  JOIN "genres" ON "movies_genres".genre_id = "genres".id
+  GROUP BY "movies".id, "movies".title, "movies".description, "movies".poster;`;
   pool.query(query)
     .then(result => {
       res.send(result.rows);
@@ -17,26 +21,26 @@ router.get('/', (req, res) => {
 
 });
 
-// GET all details for specific movie ID:
-router.get('/:q', (req, res) => {
-  const selectedMovieID = req.params.q;
+// // GET all details for specific movie ID:
+// router.get('/:q', (req, res) => {
+//   const selectedMovieID = req.params.q;
 
-  const detailsQuery = `SELECT "movies".title, "movies".description, "movies".poster,
-  JSON_AGG (name) "genres" FROM "movies"
-  JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
-  JOIN "genres" ON "movies_genres".genre_id = "genres".id
-  WHERE "movies".id = $1
-  GROUP BY "movies".title, "movies".description, "movies".poster;`
+//   const detailsQuery = `SELECT "movies".title, "movies".description, "movies".poster,
+//   JSON_AGG (name) "genres" FROM "movies"
+//   JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
+//   JOIN "genres" ON "movies_genres".genre_id = "genres".id
+//   WHERE "movies".id = $1
+//   GROUP BY "movies".title, "movies".description, "movies".poster;`
 
-  pool.query(detailsQuery, [selectedMovieID])
-    .then(result => {
-      res.send(result.rows);
-    })
-    .catch(err => {
-      console.log('ERROR GETting movie details', err);
-      res.sendStatus(500);
-    })
-})
+//   pool.query(detailsQuery, [selectedMovieID])
+//     .then(result => {
+//       res.send(result.rows);
+//     })
+//     .catch(err => {
+//       console.log('ERROR GETting movie details', err);
+//       res.sendStatus(500);
+//     })
+// })
 
 // POST new movie to DB:
 router.post('/', (req, res) => {

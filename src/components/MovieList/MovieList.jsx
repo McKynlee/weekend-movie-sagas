@@ -34,19 +34,14 @@ function MovieList() {
 
     // Dispatch selectedMovieID to saga to use to collect
     // all movie details (including genres!) from DB:
-    dispatch({
-      type: 'FETCH_MOVIE_DETAILS',
-      payload: selectedMovieID
-    })
+    // dispatch({
+    //   type: 'FETCH_MOVIE_DETAILS',
+    //   payload: selectedMovieID
+    // })
 
-    // Trying to slow down the move to details page so I have time
-    // to get the needed data from db:
-    moveToDetails();
+    history.push(`/details/${selectedMovieID}`)
   }
 
-  const moveToDetails = () => {
-    history.push('/details')
-  }
 
   return (
     <Grid container>

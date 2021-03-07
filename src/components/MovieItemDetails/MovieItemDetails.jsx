@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
   Select,
@@ -17,25 +17,31 @@ import {
 function MovieItemDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const movieIdParam = useParams(':id');
+  console.log('movieIdParam', movieIdParam);
 
-  // I think I need to be using useEffect to bring
-  // info in on load, but I'm not sure what I can call:
-  // I realize this throws an error because I'm not sending a payload
-  // But without it, the asynchronicity blows my page up.
   useEffect(() => {
-    getMovieDetails();
-  }, []);
-
-  const getMovieDetails = () => {
     dispatch({
-      type: 'FETCH_MOVIE_DETAILS',
-    })
-  }
+      type: 'SELECT_MOVIE',
+      payload: movieIdParam
+    });
+  }, []);
 
   // Bring movieDetails in from Reducer
   // in order to render them on page:
-  const movieDetails = useSelector(store => store.movieDetails)
+  const movieDetails = useSelector(store => store.movies);
   console.log('movieDetails:', movieDetails);
+
+
+  // let movieDetails;
+
+  // for (let movie of movies) {
+  //   if (movie.id == movieIdParam) {
+  //     movieDetails = movie;
+  //     return movieDetails;
+  //   }
+  // }
+  // console.log('movieDetails:', movieDetails);
 
   // declare variable to represent genre array within movieDetails:
   const genreArray = movieDetails[0].genres;

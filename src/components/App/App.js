@@ -64,7 +64,7 @@ function App() {
 
           <Grid item>
             {/* Details page */}
-            <Route path="/details" exact>
+            <Route path="/details/:id" exact>
               <MovieItemDetails />
             </Route>
           </Grid>
