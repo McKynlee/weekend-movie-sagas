@@ -37,6 +37,13 @@ function MovieList() {
       type: 'FETCH_MOVIE_DETAILS',
       payload: selectedMovieID
     })
+
+    // Trying to slow down the move to details page so I have time
+    // to get the needed data from db:
+    moveToDetails();
+  }
+
+  const moveToDetails = () => {
     history.push('/details')
   }
 
@@ -51,7 +58,7 @@ function MovieList() {
               <h3>{movie.title}</h3>
               <img src={movie.poster}
                 alt={movie.title}
-                className="movie-list-poster"
+                className="Movie-List-poster"
               />
             </div>
           );

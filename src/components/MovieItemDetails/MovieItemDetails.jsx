@@ -18,10 +18,10 @@ function MovieItemDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // I know I need to be using useEffect to bring
+  // I think I need to be using useEffect to bring
   // info in on load, but I'm not sure what I can call:
   // I realize this throws an error because I'm not sending a payload
-  // But without it the asynchronicity blows my page up.
+  // But without it, the asynchronicity blows my page up.
   useEffect(() => {
     getMovieDetails();
   }, []);

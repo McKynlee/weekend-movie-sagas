@@ -27,6 +27,6 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.movie-list-poster {
-  height: 300px;
+.Movie-List-poster {
+  height: 20rem;
 }
