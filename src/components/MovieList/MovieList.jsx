@@ -20,7 +20,7 @@ function MovieList() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // Bring movie list from DB in via Reducer:
+  // Bring in movie list from Reducer:
   const movies = useSelector(store => store.movies);
 
   useEffect(() => {
@@ -30,18 +30,9 @@ function MovieList() {
   // When movie clicked on, send user to detail page
   // to see that movie's info:
   const handleMovieDetail = (selectedMovieID) => {
-    console.log('in handleMoveToDetail:', selectedMovieID);
-
-    // Dispatch selectedMovieID to saga to use to collect
-    // all movie details (including genres!) from DB:
-    // dispatch({
-    //   type: 'FETCH_MOVIE_DETAILS',
-    //   payload: selectedMovieID
-    // })
-
+    // console.log('in handleMoveToDetail:', selectedMovieID);
     history.push(`/details/${selectedMovieID}`)
   }
-
 
   return (
     <Grid container>

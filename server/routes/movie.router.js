@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-// GET all movies to render on MovieList
+// GET all movies + corresponding genres 
+// to render on MovieList AND details page
 router.get('/', (req, res) => {
 
   const query = `SELECT "movies".id, "movies".title, "movies".description, "movies".poster,
@@ -20,27 +21,6 @@ router.get('/', (req, res) => {
     })
 
 });
-
-// // GET all details for specific movie ID:
-// router.get('/:q', (req, res) => {
-//   const selectedMovieID = req.params.q;
-
-//   const detailsQuery = `SELECT "movies".title, "movies".description, "movies".poster,
-//   JSON_AGG (name) "genres" FROM "movies"
-//   JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
-//   JOIN "genres" ON "movies_genres".genre_id = "genres".id
-//   WHERE "movies".id = $1
-//   GROUP BY "movies".title, "movies".description, "movies".poster;`
-
-//   pool.query(detailsQuery, [selectedMovieID])
-//     .then(result => {
-//       res.send(result.rows);
-//     })
-//     .catch(err => {
-//       console.log('ERROR GETting movie details', err);
-//       res.sendStatus(500);
-//     })
-// })
 
 // POST new movie to DB:
 router.post('/', (req, res) => {

@@ -32,17 +32,6 @@ function MovieItemDetails() {
   const movieDetails = useSelector(store => store.movies);
   console.log('movieDetails:', movieDetails);
 
-
-  // let movieDetails;
-
-  // for (let movie of movies) {
-  //   if (movie.id == movieIdParam) {
-  //     movieDetails = movie;
-  //     return movieDetails;
-  //   }
-  // }
-  // console.log('movieDetails:', movieDetails);
-
   // declare variable to represent genre array within movieDetails:
   const genreArray = movieDetails[0].genres;
 
