@@ -3,16 +3,10 @@ import './App.css';
 import {
   Grid,
   Breadcrumbs,
-  makeStyles
+  Typography,
 } from '@material-ui/core';
-// import {
-//   HomeIcon,
-//   WhatshotIcon,
-//   GrainIcon
-// } from '@material-ui/icons';
 import HomeIcon from '@material-ui/icons/Home';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
-import GrainIcon from '@material-ui/icons/Grain';
+import MovieIcon from '@material-ui/icons/Movie';
 
 
 // Custom components:
@@ -21,6 +15,12 @@ import MovieItemDetails from '../MovieItemDetails/MovieItemDetails';
 import AddMovie from '../AddMovie/AddMovie';
 
 function App() {
+  // breadcrumbs style:
+  const breadcrumbStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    color: 'white'
+  };
 
   return (
     <div className="App">
@@ -30,40 +30,54 @@ function App() {
         alignItems="center">
         <Grid item xs={12}>
           <header className="App-header">
-            <h1>The Movies Saga!</h1>
+            <Typography variant='h3' component='h1'
+            >
+              The Movies Saga!
+            </Typography>
           </header>
+        </Grid>
+        <Router>
 
-          <Router>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link to='/' color="inherit">
+          <Grid item xs={12}>
+            <Breadcrumbs
+              aria-label="breadcrumb"
+              className='App-breadcrumbs'
+              style={breadcrumbStyle}
+            >
+              <Link to='/' style={{ color: 'white' }}>
                 <HomeIcon />
               Home
              </Link>
-              <Link to="/add"
-                color="inherit" >
-                <GrainIcon />
+              <Link to="/add" style={{ color: 'white' }}>
+                <MovieIcon />
                 Add Movie
               </Link>
             </Breadcrumbs>
+          </Grid>
 
+          <Grid item>
             {/* Movie List page */}
             <Route path="/" exact>
               <MovieList />
             </Route>
+          </Grid>
 
+          <Grid item>
             {/* Details page */}
             <Route path="/details" exact>
               <MovieItemDetails />
             </Route>
+          </Grid>
 
+          <Grid item>
             {/* Add Movie page */}
             <Route path="/add" exact>
               <AddMovie />
             </Route>
+          </Grid>
 
-          </Router>
+        </Router>
 
-        </Grid>
       </Grid>
     </div >
   );

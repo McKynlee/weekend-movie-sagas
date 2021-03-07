@@ -12,6 +12,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Grid,
 } from '@material-ui/core';
 
 
@@ -48,23 +49,29 @@ function MovieList() {
   }
 
   return (
-    <main>
-      <h1>MovieList</h1>
-      <section className="movies">
-        {movies.map(movie => {
-          return (
-            <div key={movie.id} onClick={() =>
-              handleMovieDetail(movie.id)}>
-              <h3>{movie.title}</h3>
-              <img src={movie.poster}
-                alt={movie.title}
-                className="Movie-List-poster"
-              />
-            </div>
-          );
-        })}
-      </section>
-    </main>
+    <Grid container>
+      <main>
+        <Grid item xs={12}>
+          <Typography variant='h4' component='h2'>
+            MovieList
+      </Typography>
+        </Grid>
+        <section className="movies">
+          {movies.map(movie => {
+            return (
+              <div key={movie.id} onClick={() =>
+                handleMovieDetail(movie.id)}>
+                <h3>{movie.title}</h3>
+                <img src={movie.poster}
+                  alt={movie.title}
+                  className="Movie-List-poster"
+                />
+              </div>
+            );
+          })}
+        </section>
+      </main>
+    </Grid>
   );
 }
 
