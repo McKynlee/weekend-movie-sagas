@@ -45,3 +45,7 @@ body {
   align-items: baseline;
   justify-content: space-around;
 }
+
+.Movie-List-movie {
+  margin-bottom: 5rem;
+}
