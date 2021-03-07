@@ -2,6 +2,18 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import './MovieList.css'
+import {
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Button,
+  Typography,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+} from '@material-ui/core';
+
 
 function MovieList() {
   const dispatch = useDispatch();
@@ -37,7 +49,10 @@ function MovieList() {
             <div key={movie.id} onClick={() =>
               handleMovieDetail(movie.id)}>
               <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title} />
+              <img src={movie.poster}
+                alt={movie.title}
+                className="movie-list-poster"
+              />
             </div>
           );
         })}

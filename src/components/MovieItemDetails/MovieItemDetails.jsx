@@ -1,13 +1,36 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
+import {
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Button,
+  Typography,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+} from '@material-ui/core';
 
 function MovieItemDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // I feel like I should be using useEffect to bring
-  // info in on load, but it seems to be working...
+  // I know I need to be using useEffect to bring
+  // info in on load, but I'm not sure what I can call:
+  // I realize this throws an error because I'm not sending a payload
+  // But without it the asynchronicity blows my page up.
+  useEffect(() => {
+    getMovieDetails();
+  }, []);
+
+  const getMovieDetails = () => {
+    dispatch({
+      type: 'FETCH_MOVIE_DETAILS',
+    })
+  }
 
   // Bring movieDetails in from Reducer
   // in order to render them on page:
