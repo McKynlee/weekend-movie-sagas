@@ -14,10 +14,6 @@ body {
   color: white;
 }
 
-/* Link:link {
-  color: white;
-} */
-
 .App-title {
   font-size: 1.5em;
 }
@@ -31,6 +27,21 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.Movie-List-title {
+  flex-wrap: wrap;
+  max-width: 15rem;
+  height: 4rem;
+  justify-self: self-end;
+  align-self: baseline;
+}
+
 .Movie-List-poster {
   height: 20rem;
+}
+
+.Movie-List-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-around;
 }

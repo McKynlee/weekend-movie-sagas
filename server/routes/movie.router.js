@@ -10,7 +10,9 @@ router.get('/', (req, res) => {
   JSON_AGG (name) "genres" FROM "movies"
   JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
   JOIN "genres" ON "movies_genres".genre_id = "genres".id
-  GROUP BY "movies".id, "movies".title, "movies".description, "movies".poster;`;
+  GROUP BY "movies".id, "movies".title, "movies".description, "movies".poster
+  ORDER BY "movies".title;`;
+
   pool.query(query)
     .then(result => {
       res.send(result.rows);

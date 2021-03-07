@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import './MovieList.css'
 import {
-  FormControl,
-  MenuItem,
-  InputLabel,
   Button,
   Typography,
   Box,
@@ -42,16 +39,25 @@ function MovieList() {
             MovieList
       </Typography>
         </Grid>
-        <section className="movies">
+        <section className="Movie-List-section">
           {movies.map(movie => {
             return (
-              <div key={movie.id} onClick={() =>
-                handleMovieDetail(movie.id)}>
-                <h3>{movie.title}</h3>
-                <img src={movie.poster}
-                  alt={movie.title}
-                  className="Movie-List-poster"
-                />
+              <div className="Movie-List-movie"
+                key={movie.id} onClick={() =>
+                  handleMovieDetail(movie.id)}>
+                <Grid item xs={12}>
+                  <Typography className="Movie-List-title"
+                    variant='h6'
+                    component="h3">
+                    {movie.title}
+                  </Typography>
+                </Grid>
+                <Box boxShadow={5}>
+                  <img src={movie.poster}
+                    alt={movie.title}
+                    className="Movie-List-poster"
+                  />
+                </Box>
               </div>
             );
           })}
