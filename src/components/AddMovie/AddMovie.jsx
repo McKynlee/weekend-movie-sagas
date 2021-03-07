@@ -76,10 +76,10 @@ function AddMovie() {
         direction="row"
         justify="space-between"
         alignItems="center">
-        <FormControl onSubmit={saveNewMovie}>
+        <form onSubmit={saveNewMovie}>
           <Grid item xs={12}>
             <InputLabel>Title:
-      <TextField type="text" value={title}
+              <TextField type="text" value={title}
                 placeholder="Movie Title"
                 label="Title"
                 onChange={event =>
@@ -87,18 +87,19 @@ function AddMovie() {
               />
             </InputLabel>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12}>
             <InputLabel>Movie Poster URL:
-      <TextField type="text" value={posterURL}
+              <TextField type="text"
+                value={posterURL}
                 placeholder="Poster URL"
                 onChange={event =>
                   setPosterURL(event.target.value)}
               />
             </InputLabel>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <InputLabel>Description:
-            <TextField multiline rows={4}
+            <TextField multiline rows={12}
                 id="description"
                 name="description" rows="4" cols="10"
                 value={description}
@@ -107,7 +108,7 @@ function AddMovie() {
               />
             </InputLabel>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <Select
               name="genre"
               id="genre"
@@ -125,7 +126,7 @@ function AddMovie() {
               })}
             </Select>
           </Grid>
-        </FormControl>
+        </form>
         <Button onClick={handleCancel}>
           Cancel
         </Button>

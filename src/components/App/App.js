@@ -55,21 +55,21 @@ function App() {
             </Breadcrumbs>
           </Grid>
 
-          <Grid item>
+          <Grid item xs={12}>
             {/* Movie List page */}
             <Route path="/" exact>
               <MovieList />
             </Route>
           </Grid>
 
-          <Grid item>
+          <Grid item xs={12}>
             {/* Details page */}
             <Route path="/details/:id" exact>
               <MovieItemDetails />
             </Route>
           </Grid>
 
-          <Grid item>
+          <Grid item xs={12}>
             {/* Add Movie page */}
             <Route path="/add" exact>
               <AddMovie />
