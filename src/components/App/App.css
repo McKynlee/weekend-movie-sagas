@@ -63,6 +63,7 @@ body {
 
 .Movie-Item-img {
   box-shadow: 10rem #28527a;
+  height: 20rem;
 }
 
 .Movie-Item-description {
