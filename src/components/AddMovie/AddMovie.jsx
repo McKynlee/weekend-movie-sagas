@@ -1,6 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
+import {
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Button,
+  TextField,
+  Typography,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+} from '@material-ui/core';
+import { spacing } from '@material-ui/system';
 
 // Form page for users to add movie to the list:
 function AddMovie() {
@@ -53,54 +68,109 @@ function AddMovie() {
         genre_id
       }
     })
+    // Navigate back to home page on save
     history.push('/');
   } // end saveNewMovie
 
   return (
     <div>
-      <form onSubmit={saveNewMovie}>
-        <label>Title:
-      <input type="text" value={title}
-            placeholder="Movie Title"
-            onChange={event =>
-              setTitle(event.target.value)}
-          />
-        </label>
-        <label>Movie Poster URL:
-      <input type="text" value={posterURL}
-            placeholder="Poster URL"
-            onChange={event =>
-              setPosterURL(event.target.value)}
-          />
-        </label>
-        <label>Description:
-        <textarea id="description"
-            name="description" rows="4" cols="10"
-            value={description}
-            onChange={event =>
-              setDescription(event.target.value)}
-          />
-        </label>
-        <select onChange={event =>
-          setGenre_id(event.target.value)}>
-          <option value=''>Choose a Genre</option>
-          {/* set value of each option = that genre's id */}
-          {genreList.map(genre => {
-            return (
-              <option key={genre.id} value={genre.id}>
-                {genre.name}
-              </option>
-            )
-          })}
-        </select>
-        <button onClick={handleCancel}>
-          Cancel
-        </button>
-        <button>
-          Save
-        </button>
-      </form>
-    </div>
+      <Grid container
+        direction="row"
+        justify="center"
+        alignItems="center">
+        <Grid item xs={12}>
+          <Box m={5}>
+            <Card className="Add-Movie-card">
+              <form onSubmit={saveNewMovie}>
+                <Box m={3}>
+                  <InputLabel>
+                    <TextField type="text" value={title}
+                      placeholder="Movie Title"
+                      label="Title"
+                      onChange={event =>
+                        setTitle(event.target.value)}
+                    />
+                  </InputLabel>
+                </Box>
+
+                <Box m={3}>
+                  <InputLabel>
+                    <TextField type="text"
+                      value={posterURL}
+                      label="Movie Poster URL"
+                      onChange={event =>
+                        setPosterURL(event.target.value)}
+                    />
+                  </InputLabel>
+                </Box>
+
+
+                <Box m={3}>
+                  <InputLabel>
+                    <TextField multiline rows={12}
+                      label="Movie Description"
+                      name="description" rows="4" cols="10"
+                      variant="outlined"
+                      value={description}
+                      onChange={event =>
+                        setDescription(event.target.value)}
+                    />
+                  </InputLabel>
+                </Box>
+
+
+                <Box m={3}>
+                  <InputLabel id="genre">Genre</InputLabel>
+                  <Select
+                    displayEmpty
+                    id="genre"
+                    value={genre_id}
+                    onChange={event =>
+                      setGenre_id(event.target.value)}>
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem >
+                    {/* set value of each option = that genre's id */}
+                    {genreList.map(genre => {
+                      return (
+                        <MenuItem key={genre.id}
+                          value={genre.id}
+                        >
+                          {genre.name}
+                        </MenuItem>
+                      )
+                    })}
+                  </Select>
+
+                </Box>
+
+              </form>
+            </Card>
+          </Box>
+        </Grid>
+        <Grid container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid item >
+            <Button className="Add-Movie-cancel-btn"
+              variant="contained"
+              onClick={handleCancel}>
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button className="Add-Movie-save-btn"
+              variant="contained"
+              color="primary"
+              onClick={saveNewMovie}>
+              Save
+        </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </div >
   )
 } //end AddMovie
 

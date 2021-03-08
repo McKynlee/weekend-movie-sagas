@@ -1,17 +1,22 @@
+body {
+  background-color: #8ac4d0;
+  color: #28527a;
+  margin: 0rem;
+}
+
 .App {
   text-align: center;
 }
 
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+.App-header, .App-breadcrumbs {
+  background-color: #28527a;
+  height: 50px;
   padding: 20px;
-  color: white;
+  color: #fbeeac;
 }
 
 .App-title {
-  font-size: 1.5em;
+  margin-top: 3rem;
 }
 
 .App-intro {
@@ -21,4 +26,55 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Movie-List-title {
+  flex-wrap: wrap;
+  max-width: 15rem;
+  height: 4rem;
+  justify-self: self-end;
+  align-self: baseline;
+}
+
+.Movie-List-poster {
+  height: 20rem;
+}
+
+.Movie-List-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.Movie-List-movie {
+  margin-bottom: 5rem;
+}
+
+.Add-Movie-card {
+  width: 75%;
+  margin: auto;
+}
+
+.Add-Movie-cancel-btn, .Add-Movie-save-btn {
+  width: 6rem;
+  margin-left: 2rem;
+}
+
+.Movie-Item-img {
+  box-shadow: 10rem #28527a;
+}
+
+.Movie-Item-description {
+  background-color: #fbeeac;
+  color: #28527a;
+  width: 75%;
+  border-radius: 3rem;
+}
+
+.Movie-Item-genres {
+  width: 50%;
+  background-color: #28527a;
+  color: #fbeeac;
+  border-radius: 3rem;
 }
