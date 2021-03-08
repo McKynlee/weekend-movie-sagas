@@ -43,20 +43,49 @@ function MovieItemDetails() {
   return (
     <main>
       <section>
-        <h3>{movieDetails[0].title}</h3>
-        <img src={movieDetails[0].poster} alt={movieDetails[0].title} />
+        <Box m={3}>
+          <Typography variant='h5' component="h3">
+            {movieDetails[0].title}
+          </Typography>
+        </Box>
+        <img className="Movie-Item-img"
+          src={movieDetails[0].poster} alt={movieDetails[0].title} />
       </section>
       <section>
-        <h4>Associate Genres:</h4>
-        {genreArray.map(genre => {
-          return (
-            <div>{genre}</div>
-          )
-        })}
-        <div>{movieDetails[0].description}</div>
+        <Box m={3}>
+          <Box boxShadow={10} m="auto" p={3}
+            className="Movie-Item-genres">
+            <Typography variant='h6' component="h4">
+              Associate Genres:
+          </Typography>
+            {genreArray.map(genre => {
+              return (
+                <Typography variant='body1'
+                  component="div"
+                  key={genre.id}>
+                  {genre}
+                </Typography>
+              )
+            })}
+          </Box>
+        </Box>
+        <Box boxShadow={10} m="auto" p={3}
+          className="Movie-Item-description">
+          <Typography variant='h6' component="h4">
+            Movie Description:
+          </Typography>
+          <Typography variant='body1'
+            component="div">
+            {movieDetails[0].description}
+          </Typography>
+        </Box>
       </section>
-
-      <button onClick={backToList}>Back to List</button>
+      <Box m={3}>
+        <Button variant="outlined"
+          onClick={backToList}>
+          Back to List
+      </Button>
+      </Box>
     </main>
   )
 } // end MovieItemDetails

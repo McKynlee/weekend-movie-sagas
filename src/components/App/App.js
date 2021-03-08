@@ -19,7 +19,7 @@ function App() {
   const breadcrumbStyle = {
     display: 'flex',
     justifyContent: 'center',
-    color: 'white'
+    color: '#f4d160'
   };
 
   return (
@@ -30,7 +30,9 @@ function App() {
         alignItems="center">
         <Grid item xs={12}>
           <header className="App-header">
-            <Typography variant='h3' component='h1'
+            <Typography
+              variant='h3'
+              component='h1'
             >
               The Movies Saga!
             </Typography>
@@ -44,11 +46,11 @@ function App() {
               className='App-breadcrumbs'
               style={breadcrumbStyle}
             >
-              <Link to='/' style={{ color: 'white' }}>
+              <Link to='/' style={{ color: '#f4d160' }}>
                 <HomeIcon />
               Home
              </Link>
-              <Link to="/add" style={{ color: 'white' }}>
+              <Link to="/add" style={{ color: '#f4d160' }}>
                 <MovieIcon />
                 Add Movie
               </Link>

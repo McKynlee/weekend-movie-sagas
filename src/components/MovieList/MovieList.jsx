@@ -34,11 +34,6 @@ function MovieList() {
   return (
     <Grid container>
       <main>
-        <Grid item xs={12}>
-          <Typography variant='h4' component='h2'>
-            MovieList
-      </Typography>
-        </Grid>
         <section className="Movie-List-section">
           {movies.map(movie => {
             return (

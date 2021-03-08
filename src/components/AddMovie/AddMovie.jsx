@@ -78,10 +78,10 @@ function AddMovie() {
         direction="row"
         justify="center"
         alignItems="center">
-        <Box m={5}>
-          <Card className="Add-Movie-card">
-            <form onSubmit={saveNewMovie}>
-              <Grid item xs={12}>
+        <Grid item xs={12}>
+          <Box m={5}>
+            <Card className="Add-Movie-card">
+              <form onSubmit={saveNewMovie}>
                 <Box m={3}>
                   <InputLabel>
                     <TextField type="text" value={title}
@@ -92,8 +92,7 @@ function AddMovie() {
                     />
                   </InputLabel>
                 </Box>
-              </Grid>
-              <Grid item xs={12}>
+
                 <Box m={3}>
                   <InputLabel>
                     <TextField type="text"
@@ -104,8 +103,8 @@ function AddMovie() {
                     />
                   </InputLabel>
                 </Box>
-              </Grid>
-              <Grid item xs={12}>
+
+
                 <Box m={3}>
                   <InputLabel>
                     <TextField multiline rows={12}
@@ -118,8 +117,8 @@ function AddMovie() {
                     />
                   </InputLabel>
                 </Box>
-              </Grid>
-              <Grid item xs={12}>
+
+
                 <Box m={3}>
                   <InputLabel id="genre">Genre</InputLabel>
                   <Select
@@ -142,35 +141,36 @@ function AddMovie() {
                       )
                     })}
                   </Select>
-                </Box>
-              </Grid>
-            </form>
-          </Card>
-        </Box>
-      </Grid>
-      <Grid container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
-        <Grid item >
-          <Button className="Add-Movie-cancel-btn"
-            variant="contained"
-            onClick={handleCancel}>
-            Cancel
-            </Button>
-        </Grid>
-        <Grid item>
-          <Button className="Add-Movie-save-btn"
-            variant="contained"
-            color="primary"
-            onClick={saveNewMovie}>
-            Save
-        </Button>
-        </Grid>
-      </Grid>
 
-    </div>
+                </Box>
+
+              </form>
+            </Card>
+          </Box>
+        </Grid>
+        <Grid container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid item >
+            <Button className="Add-Movie-cancel-btn"
+              variant="contained"
+              onClick={handleCancel}>
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button className="Add-Movie-save-btn"
+              variant="contained"
+              color="primary"
+              onClick={saveNewMovie}>
+              Save
+        </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </div >
   )
 } //end AddMovie
 
