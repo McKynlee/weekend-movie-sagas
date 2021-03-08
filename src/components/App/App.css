@@ -49,3 +49,12 @@ body {
 .Movie-List-movie {
   margin-bottom: 5rem;
 }
+
+.Add-Movie-card {
+  width: 30rem;
+}
+
+.Add-Movie-cancel-btn, .Add-Movie-save-btn {
+  width: 6rem;
+  margin-left: 2rem;
+}
