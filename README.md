@@ -6,20 +6,21 @@ _Duration: Weekend Sprint_
 
 This application serves as a movie gallery, to which the user can add movies, and can click on any individual movie to display all stored information for that specific movie.  
 
-Here is a view of the four pages of questions:
+Here is a view of the home page that displays the overall movie list:
 
-![Picture Name](./public/images/FormOne.png)
+![Movie List](./wireframes/movie-list.png)
 
-![Pic name](.png)
-![Selection verification](.png)
-![Review Page](.png)
 
 If a user clicks one of the movies on the home page, they will be brought to a page that displays more information about that movie (this movie information is pulled from multiple tables in the database):
-![Editing previous answer](.png)
+
+![Movie Details Page (part I)](./wireframes/movie-item.png)
+
+![Movie Details Page (part II)](./wireframes/movie-item-description.png)
+
 
 A user can click the "Add Movie" link to be taken to a form page, from which they can add a movie of their choice to the database.  When they click "Save", they will be brought back to the home page, where they will see the movie they added displayed along with all the other titles:
-![Add movie form](.png)
 
+![Add Movie Page](./wireframes/add-movie.png)
 
 ## Installation
 
@@ -39,8 +40,6 @@ A user can click the "Add Movie" link to be taken to a form page, from which the
 1. The user may click on any individual movie (on the poster or title) to be brought to a new page with a detailed view of that individual movie, including a description and its related genres (these are pulled from multiple tables in the database).
 
 1. The user may add a new movie to the list by clicking the navigation link to 'Add Movie', which will open up a form where they can input their selected movie title, give a URL to the movie poster, enter a description of the movie, and choose a genre to represent the movie.  If they click 'cancel', the information will not be saved nor added to the movie list, and they will be taken back to the home page with all the movies displayed.  If they hit 'save' after adding their movie information, their input will be added to the home page display as well as the database, and they will be directed back to the home page.
-
-
 
 ## Built with:
 
